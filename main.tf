@@ -1,14 +1,34 @@
 data "external" "get_ip_addres_using_shell_dev" {
-  program = ["python3","scripts/get_ip_port.py"]
+  program = ["python3", "scripts/get_ip_port.py"]
+  query = {
+    p_env = "dev"
+  }
+}
+
+data "external" "get_ip_addres_using_shell_qa" {
+  program = ["python3", "scripts/get_ip_port.py"]
   query = {
     p_env = "qa"
   }
 }
 
-output "ip_address_for_qa" {
-  value = data.external.get_ip_addres_using_shell_dev.result.ip_address
+data "external" "get_ip_addres_using_shell_uat" {
+  program = ["python3", "scripts/get_ip_port.py"]
+  query = {
+    p_env = "uat"
+  }
 }
 
-output "port_num_for_qa" {
-  value = data.external.get_ip_addres_using_shell_dev.result.port_num
+data "external" "get_ip_addres_using_shell_stage" {
+  program = ["python3", "scripts/get_ip_port.py"]
+  query = {
+    p_env = "stage"
+  }
+}
+
+data "external" "get_ip_addres_using_shell_prod" {
+  program = ["python3", "scripts/get_ip_port.py"]
+  query = {
+    p_env = "prod"
+  }
 }
